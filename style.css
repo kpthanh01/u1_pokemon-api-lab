@@ -1,0 +1,86 @@
+body {
+  background-image: url('./assets/pkmBackground.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 0;
+  padding: 22px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1,h2,h3,h4 {
+  margin: 0;
+  padding: 0;
+}
+
+h1, .inputContainer {
+  margin: auto;
+}
+
+main {
+  background-image: url(./assets/pokedex.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 30em;
+  padding: 13em 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputContainer {
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 24em;
+}
+
+.imageContainer div {
+  display: flex;
+  justify-content: space-around;
+  margin-block-start: 1em;
+}
+
+#order {
+  margin-right: 10px;
+}
+
+#name {
+  text-transform: capitalize;
+}
+
+#sprite {
+  display: none;
+}
+
+.infoContainer {
+  display: none;
+  margin-block-start: 1em;
+}
+
+#types, #abilities {
+  display: flex;
+  justify-content: flex-start;
+}
+#types p, #abilities p {
+  margin-right: 15px;
+  text-transform: capitalize;
+}
+
+#types p {
+  color: white;
+  padding: 6px;
+  border-radius: 5px;
+  width: 50px;
+  text-align: center;
+}
+
+#stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-transform: capitalize;
+}
