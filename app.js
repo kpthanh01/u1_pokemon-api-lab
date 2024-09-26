@@ -1,16 +1,18 @@
 const inputTag = document.getElementById('input');
 const searchTag = document.getElementById('search');
 const spriteTag = document.getElementById('sprite');
+const shinyTag = document.getElementById('shinySprite');
 const nameTag = document.getElementById('name');
 const orderNumTag = document.getElementById('order');
 const statsTag = document.getElementById('stats');
 const abilityTag = document.getElementById('abilities');
 const typesTag = document.getElementById('types');
+const heightTag = document.getElementById('height');
+const weightTag = document.getElementById('weight');
 const infoTag = document.querySelector('.infoContainer');
 let pkmAPI = 'https://pokeapi.co/api/v2/pokemon/';
 let pokeData = '';
-let statList = [];
-let stats = ['Hp', 'Atk', 'Def', 'sp.Atk', 'Sp.Def', 'Speed']
+let stats = ['hp', 'atk', 'def', 'sp.Atk', 'sp.Def', 'speed']
 const colorTypes = {
   normal: '#9fa19f',
   fighting: '#ff8000',
@@ -35,48 +37,55 @@ const colorTypes = {
 
 let getPokemon = async (name) => {
   let pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-  pokeData = pokemon.data
-  statList = [...pokeData.stats]
-  statList.forEach(item => {
-
-  })
+  pokeData = pokemon.data;
 }
 
 function renderInfo() {
-  console.log(statList)
-  spriteTag.style.display = 'block';
-  infoTag.style.display = 'block';
-  spriteTag.setAttribute('src', `${pokeData.sprites.front_default}`);
-  nameTag.innerText = pokeData.name;
-  orderNumTag.innerText = `#${pokeData.order}`;
-
   let statValue = '';
   let abilitesValue = '';
   let typesValue = '';
+  spriteTag.style.display = 'block';
+  shinyTag.style.display = 'block';
+  infoTag.style.display = 'block';
+
+  spriteTag.setAttribute('src', `${pokeData.sprites.other.showdown.front_default}`);
+  shinyTag.setAttribute('src', `${pokeData.sprites.other.showdown.front_shiny}`);
+  console.log(pokeData.height)
+  console.log(pokeData.weight)
+  heightTag.innerText = `${pokeData.height/10}m`;
+  weightTag.innerText = `${pokeData.weight/10}kg`;
+  nameTag.innerText = pokeData.name;
+  orderNumTag.innerText = `#${pokeData.order}`;
 
   pokeData.types.forEach(item => {
     let color = '';
     Object.keys(colorTypes).forEach(value => {
-      value === item.type.name ? color = colorTypes[value] : ''
+      value === item.type.name ? color = colorTypes[value] : '';
     })
-    typesValue += `<p style="background-color:${color};">${item.type.name}</p>`
-    typesTag.innerHTML = typesValue
+    typesValue += `<p style="background-color:${color};">${item.type.name}</p>`;
+    typesTag.innerHTML = typesValue;
   })
 
   pokeData.abilities.forEach(item => {
-    abilitesValue += `<p>${item.ability.name}</p>`
-    abilityTag.innerHTML = abilitesValue
+    abilitesValue += `<p>${item.ability.name}</p>`;
+    abilityTag.innerHTML = abilitesValue;
   })
 
   pokeData.stats.forEach((item, index) => {
-    statValue += `<p>${stats[index]}: ${item.base_stat}</p>`
-    statsTag.innerHTML = statValue
+    statValue += `<p class="${item.stat.name}">${stats[index]}: ${item.base_stat}</p>`;
+    statsTag.innerHTML = statValue;
   })
 }
 
 searchTag.addEventListener('click', () => {
   if (inputTag.value) {
-    getPokemon(inputTag.value);
-    setTimeout(renderInfo, 100);
+    getPokemon(inputTag.value)
+    .then(() => {
+      setTimeout(renderInfo, 100);
+    })
+    .catch(error => {
+      console.log(error)
+    });
+    
   } 
 })

@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/30f6fea20c.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script defer src="app.js"></script>
   <title>Document</title>
@@ -15,7 +16,9 @@
     <h1>Pokedex</h1>
     <div class="inputContainer">
       <input id="input" type="text">
-      <button id="search">Find</button>
+      <button id="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
     </div>
     <section>
       <div class="imageContainer">
@@ -24,6 +27,7 @@
           <h4 id="name"></h4>
         </div>
         <img id="sprite" src="" alt="pokemon image">
+        <img id="shinySprite" src="" alt="pokemon image">
         <i></i>
       </div>
       <div class="infoContainer">
@@ -33,8 +37,11 @@
         <div id="abilities"></div>
         <h4>Base Stats</h4>
         <div id="stats"></div>
-        <h4></h4>
-        <div id="dimensions">
+        <div class="dimensions">
+          <h4>Height:</h4>
+          <span id="height"></span>
+          <h4>Weight:</h4>
+          <span id="weight"></span>
         </div>
       </div>
     </section>

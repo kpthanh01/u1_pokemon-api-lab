@@ -10,12 +10,20 @@ body {
   align-items: center;
 }
 
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
   padding: 0;
 }
 
-h1, .inputContainer {
+h1 {
+  font-size: 45px;
+}
+
+h1,
+.inputContainer {
   margin: auto;
 }
 
@@ -29,7 +37,36 @@ main {
   flex-direction: column;
 }
 
-.inputContainer {
+#input {
+  font-size: 18px;
+  width: 130px;
+  text-align: center;
+  border: 2px solid #4d71dac9;
+  border-radius: 12px;
+}
+
+#input:focus,
+#input:active,
+#input:valid,
+#input:focus-visible,
+#input:focus-within {
+  outline: none;
+  background: #eeeeeefa;
+}
+
+#search {
+  background: none;
+  border: none;
+
+}
+
+#search:hover {
+  cursor: pointer;
+}
+
+i {
+  margin-block-start: 6px;
+  font-size: 15px;
 }
 
 section {
@@ -41,7 +78,6 @@ section {
 
 .imageContainer div {
   display: flex;
-  justify-content: space-around;
   margin-block-start: 1em;
 }
 
@@ -53,20 +89,26 @@ section {
   text-transform: capitalize;
 }
 
-#sprite {
+#sprite,
+#shinySprite {
   display: none;
+  margin: 20px auto 0 auto;
 }
 
 .infoContainer {
   display: none;
   margin-block-start: 1em;
+  width: 14em;
 }
 
-#types, #abilities {
+#types,
+#abilities {
   display: flex;
   justify-content: flex-start;
 }
-#types p, #abilities p {
+
+#types p,
+#abilities p {
   margin-right: 15px;
   text-transform: capitalize;
 }
@@ -83,4 +125,42 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   text-transform: capitalize;
+}
+
+#stats p {
+  margin: 8px 0;
+  width: 90px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 6px;
+}
+
+.hp {
+  background-color: #9EE865;
+}
+
+.attack {
+  background-color: #F5DE69;
+}
+
+.defense {
+  background-color: #F09A65;
+}
+
+.special-attack {
+  background-color: #66D8F6;
+}
+
+.special-defense {
+  background-color: #899EEA;
+}
+
+.speed {
+  background-color: #E46CCA;
+}
+
+#order,
+#name,
+h4 {
+  font-size: 20px;
 }
